@@ -1,5 +1,5 @@
 {
-  "name": "@yeldirium/ts-npm-package-template",
+  "name": "@yeldirium/zettelkasten-tools",
   "version": "0.0.1",
   "description": "A template for npm packages written in TypeScript.",
   "author": {
@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yeldirium/ts-npm-package-template.git"
+    "url": "git://github.com/yeldirium/zettelkasten-tools.git"
   },
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
