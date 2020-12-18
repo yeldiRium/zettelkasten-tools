@@ -1,6 +1,6 @@
 {
   "name": "@yeldirium/zettelkasten-tools",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A template for npm packages written in TypeScript.",
   "author": {
     "name": "Hannes Leutloff",
