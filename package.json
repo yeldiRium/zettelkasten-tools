@@ -12,14 +12,23 @@
     "type": "git",
     "url": "git://github.com/yeldirium/zettelkasten-tools.git"
   },
-  "main": "build/lib/index.js",
-  "types": "build/lib/index.d.ts",
+  "bin": {
+    "zkt": "./build/lib/bin/zkt.js"
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@yeldirium/kaputt": "2.1.0",
+    "@yeldirium/result": "1.2.0",
+    "buntstift": "4.0.17",
+    "command-line-interface": "3.6.15",
+    "ejs": "3.1.5"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
+    "@types/ejs": "3.0.5",
     "assertthat": "5.2.1",
     "roboter": "11.4.2",
     "semantic-release": "17.3.0"
