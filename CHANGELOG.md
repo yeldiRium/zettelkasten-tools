@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/yeldirium/zettelkasten-tools/compare/v1.0.0...v1.1.0) (2020-12-19)
+
+
+### Features
+
+* Add `new` command that creates zettel from default template. ([1f6b317](https://github.com/yeldirium/zettelkasten-tools/commit/1f6b31778d6659296b744172991a646d40cc90dc))
+
 # 1.0.0 (2020-12-18)
 
 
