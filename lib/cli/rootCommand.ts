@@ -1,4 +1,5 @@
 import { Command } from 'command-line-interface';
+import { newCommand } from './new/newCommand';
 import { RootOptions } from './RootOptions';
 
 const rootCommand = function (): Command<RootOptions> {
@@ -14,6 +15,14 @@ const rootCommand = function (): Command<RootOptions> {
         type: 'boolean',
         isRequired: false,
         defaultValue: false
+      },
+      {
+        name: 'quiet',
+        alias: 'q',
+        description: 'reduce output for scripting purposes. overrides verbose',
+        type: 'boolean',
+        isRequired: false,
+        defaultValue: false
       }
     ],
 
@@ -24,6 +33,7 @@ const rootCommand = function (): Command<RootOptions> {
     },
 
     subcommands: {
+      new: newCommand()
     }
   };
 };

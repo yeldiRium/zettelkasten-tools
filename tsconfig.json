@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "lib": [ "esnext" ],
     "module": "commonjs",
+    "rootDir": ".",
     "outDir": "build",
     "resolveJsonModule": true,
     "strict": true,

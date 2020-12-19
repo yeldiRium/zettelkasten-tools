@@ -1,13 +1,12 @@
 import { buntstift } from 'buntstift';
 import { Handlers } from 'command-line-interface';
-import { isCustomError } from '@yeldirium/kaputt';
 
 const getHandlers = function (): Partial<Handlers> {
   return {
-    commandFailed ({ ex }): void {
-      if (isCustomError(ex)) {
-        buntstift.error(ex.message);
-        buntstift.verbose(ex.stack ?? 'No stacktrace available.');
+    commandFailed ({ ex }: { ex: any }): void {
+      buntstift.error(ex.message);
+      if (buntstift.getConfiguration().isVerboseModeEnabled) {
+        buntstift.raw(ex);
       }
     },
 
