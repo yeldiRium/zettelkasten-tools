@@ -1,5 +1,6 @@
 import { buntstift } from 'buntstift';
 import { Command } from 'command-line-interface';
+import { defaultTemplateName } from '../../domain/constants/defaultTemplateName';
 import { format } from 'date-fns';
 import fs from 'fs';
 import { generateZettelId } from '../../domain/generateZettelId';
@@ -28,7 +29,7 @@ const newCommand = function (): Command<NewOptions> {
       const newId = generateZettelId();
       const newZettelPath = path.join(cwd, `${newId}.md`);
 
-      const selectedTemplate = path.join(appRoot, 'static', 'templates', 'default.md.ejs');
+      const selectedTemplate = path.join(appRoot, 'static', 'templates', `${defaultTemplateName}.md.ejs`);
 
       const currentDate = new Date();
       const data = {

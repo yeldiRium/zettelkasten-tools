@@ -42,7 +42,7 @@ suite('zkt', (): void => {
       assert.that(files.length).is.equalTo(1);
     });
 
-    test('creates a new zettel with the default template.', async (): Promise<void> => {
+    test('creates a new zettel with the empty template.', async (): Promise<void> => {
       const time = new Date();
       const stop = record(false);
 

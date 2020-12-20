@@ -1,6 +1,7 @@
 import { Command } from 'command-line-interface';
 import { newCommand } from './new/newCommand';
 import { RootOptions } from './RootOptions';
+import { templatesCommand } from './templates/templatesCommand';
 
 const rootCommand = function (): Command<RootOptions> {
   return {
@@ -33,7 +34,8 @@ const rootCommand = function (): Command<RootOptions> {
     },
 
     subcommands: {
-      new: newCommand()
+      new: newCommand(),
+      templates: templatesCommand()
     }
   };
 };
