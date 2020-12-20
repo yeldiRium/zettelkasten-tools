@@ -18,6 +18,10 @@ A CLI that contains various tools for working with a markdown-based zettelkasten
 $ npm install @yeldirium/zettelkasten-tools
 ```
 
+## Documentation
+
+The CLI is pretty self-documenting. Check out the `help` command and the `--help` flag for each sub-command.
+
 ## Running the quality assurance
 
 To lint and test this package use [roboter](https://www.npmjs.com/package/roboter).
