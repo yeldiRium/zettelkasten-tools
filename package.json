@@ -32,6 +32,7 @@
     "@types/common-tags": "1.8.0",
     "@types/ejs": "3.0.5",
     "@types/shelljs": "0.8.8",
+    "@types/sinon": "9.0.9",
     "assertthat": "5.2.1",
     "common-tags": "1.8.0",
     "flaschenpost": "4.3.27",
@@ -40,6 +41,7 @@
     "roboter": "11.4.2",
     "semantic-release": "17.3.0",
     "shelljs": "0.8.4",
+    "sinon": "9.2.2",
     "timekeeper": "2.2.0"
   }
 }

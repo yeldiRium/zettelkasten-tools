@@ -18,9 +18,8 @@ const rootCommand = function (): Command<RootOptions> {
         defaultValue: false
       },
       {
-        name: 'quiet',
-        alias: 'q',
-        description: 'reduce output for scripting purposes. overrides verbose',
+        name: 'no-interaction',
+        description: 'reduce output and remove formatting for scripting purposes',
         type: 'boolean',
         isRequired: false,
         defaultValue: false

@@ -12,20 +12,24 @@ const templatesCommand = function (): Command<TemplatesOptions> {
 
     optionDefinitions: [],
 
-    async handle ({ options: { verbose, quiet }}): Promise<void> {
+    async handle ({ options: {
+      verbose,
+      'no-interaction': noInteractionFlag
+    }}): Promise<void> {
+      const noInteraction = noInteractionFlag || !buntstift.getConfiguration().isInteractiveSession;
+
       buntstift.configure(
         buntstift.getConfiguration().
-          withVerboseMode(verbose && !quiet)
+          withVerboseMode(verbose).
+          withQuietMode(noInteraction)
       );
 
       const availableTemplates = await findTemplates();
 
-      if (!quiet) {
-        buntstift.info('The available templates are:');
-      }
+      buntstift.info('The available templates are:');
 
       for (const template of availableTemplates) {
-        if (quiet) {
+        if (noInteraction) {
           buntstift.raw(`${template.name}\n`);
         } else {
           buntstift.list(

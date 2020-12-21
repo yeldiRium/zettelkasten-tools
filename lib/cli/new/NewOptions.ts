@@ -1,6 +1,8 @@
 import { RootOptions } from '../RootOptions';
 
-type NewOptions = RootOptions;
+interface NewOptions extends RootOptions {
+  template: string;
+}
 
 export type {
   NewOptions

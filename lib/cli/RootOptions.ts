@@ -1,6 +1,6 @@
 interface RootOptions {
   verbose: boolean;
-  quiet: boolean;
+  'no-interaction': boolean;
 }
 
 export type {
