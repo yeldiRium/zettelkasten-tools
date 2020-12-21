@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/yeldirium/zettelkasten-tools/compare/v1.2.0...v2.0.0) (2020-12-21)
+
+
+* feat!: Implement --template option for new command. ([2802d83](https://github.com/yeldirium/zettelkasten-tools/commit/2802d83717620629446ade6a953b88faf2d9c5f8))
+
+
+### BREAKING CHANGES
+
+* This reworks the CLI verbosity configuration. It replace the --quiet
+option with the more appropriate --no-interaction option, as well as
+respecting wether stdout is being piped or not.
+
 # [1.2.0](https://github.com/yeldirium/zettelkasten-tools/compare/v1.1.0...v1.2.0) (2020-12-20)
 
 
