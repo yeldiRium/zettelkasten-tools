@@ -1,6 +1,5 @@
 import { assert } from 'assertthat';
 import { buntstift } from 'buntstift';
-import { format } from 'date-fns';
 import fs from 'fs';
 import { getHandlers } from '../../../lib/cli/getHandlers';
 import { idLength } from '../../../lib/domain/generateZettelId';
@@ -49,7 +48,7 @@ suite('zkt', (): void => {
     });
 
     test('creates a new zettel with the empty template.', async (): Promise<void> => {
-      const time = new Date('2020-12-26');
+      const time = new Date('2020-12-26T00:00');
       const stop = record(false);
 
       timekeeper.freeze(time);
@@ -68,7 +67,7 @@ suite('zkt', (): void => {
       assert.that(fileContent).is.startingWith(
         stripIndent`
           ---
-          date: 2020-12-26T01:00
+          date: 2020-12-26T00:00
           ---
           
           `
@@ -104,7 +103,7 @@ suite('zkt', (): void => {
 
     suite('--template', (): void => {
       test('creates a new zettel with the empty template if explicitly asked to.', async (): Promise<void> => {
-        const time = new Date('2020-12-26');
+        const time = new Date('2020-12-26T00:00');
         const stop = record(false);
 
         timekeeper.freeze(time);
@@ -123,7 +122,7 @@ suite('zkt', (): void => {
         assert.that(fileContent).is.startingWith(
           stripIndent`
           ---
-          date: 2020-12-26T01:00
+          date: 2020-12-26T00:00
           ---
           
           `
@@ -131,7 +130,7 @@ suite('zkt', (): void => {
       });
 
       test(`creates a new zettel with the 'daily-link' template.`, async (): Promise<void> => {
-        const time = new Date('2020-12-26');
+        const time = new Date('2020-12-26T00:00');
         const stop = record(false);
 
         timekeeper.freeze(time);
@@ -150,7 +149,7 @@ suite('zkt', (): void => {
         assert.that(fileContent).is.startingWith(
           stripIndent`
             ---
-            date: 2020-12-26T01:00
+            date: 2020-12-26T00:00
             tags:
               - daily/2020/12/26
               - link
@@ -197,7 +196,7 @@ suite('zkt', (): void => {
 
   suite('--verbose new', (): void => {
     test('prints the zettel content.', async (): Promise<void> => {
-      const time = new Date();
+      const time = new Date('2020-12-26T00:00');
       const stop = record(false);
 
       timekeeper.freeze(time);
@@ -213,7 +212,7 @@ suite('zkt', (): void => {
       assert.that(stdout).is.containing(
         stripIndent`
           ---
-          date: ${format(time, `yyyy-MM-dd'T'hh:mm`)}
+          date: 2020-12-26T00:00
           ---
           
           `
