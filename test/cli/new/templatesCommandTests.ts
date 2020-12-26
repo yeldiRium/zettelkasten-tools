@@ -23,6 +23,7 @@ suite('zkt', (): void => {
       const { stdout } = stop();
 
       assert.that(stdout).is.containing('The available templates are:');
+      assert.that(stdout).is.containing('daily-link');
       assert.that(stdout).is.containing('empty (default)');
     });
   });
@@ -39,7 +40,7 @@ suite('zkt', (): void => {
 
       const { stdout } = stop();
 
-      assert.that(stdout).is.equalTo('empty\n');
+      assert.that(stdout).is.equalTo('daily-link\nempty\n');
     });
   });
 });

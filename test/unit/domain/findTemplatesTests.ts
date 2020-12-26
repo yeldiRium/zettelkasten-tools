@@ -7,6 +7,7 @@ suite('findTemplates', (): void => {
     const availableTemplates = await findTemplates();
 
     assert.that(availableTemplates).is.equalTo([
+      { name: 'daily-link', path: path.join(__dirname, '..', '..', '..', 'static', 'templates', 'daily-link.md.ejs') },
       { name: 'empty', path: path.join(__dirname, '..', '..', '..', 'static', 'templates', 'empty.md.ejs') }
     ]);
   });

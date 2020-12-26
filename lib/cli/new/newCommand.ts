@@ -55,7 +55,8 @@ const newCommand = function (): Command<NewOptions> {
       const currentDate = new Date();
       const data = {
         date: {
-          iso: format(currentDate, `yyyy-MM-dd'T'hh:mm`)
+          iso: format(currentDate, `yyyy-MM-dd'T'hh:mm`),
+          slashes: format(currentDate, `yyyy'/'MM'/'dd`)
         }
       };
 
