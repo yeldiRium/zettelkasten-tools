@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/yeldirium/zettelkasten-tools/compare/v2.0.0...v2.1.0) (2020-12-26)
+
+
+### Bug Fixes
+
+* Format hours in 24-hour format in iso. ([b6efa40](https://github.com/yeldirium/zettelkasten-tools/commit/b6efa400a7bbf321c23360defd0bd01e75b5c53e))
+
+
+### Features
+
+* Add daily-link template and additional data for templating. ([a14b649](https://github.com/yeldirium/zettelkasten-tools/commit/a14b649133e4ebc4b2e88f0cac0993a53ec54968))
+
 # [2.0.0](https://github.com/yeldirium/zettelkasten-tools/compare/v1.2.0...v2.0.0) (2020-12-21)
 
 
