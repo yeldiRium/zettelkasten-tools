@@ -49,7 +49,7 @@ suite('zkt', (): void => {
     });
 
     test('creates a new zettel with the empty template.', async (): Promise<void> => {
-      const time = new Date();
+      const time = new Date('2020-12-26');
       const stop = record(false);
 
       timekeeper.freeze(time);
@@ -68,7 +68,34 @@ suite('zkt', (): void => {
       assert.that(fileContent).is.startingWith(
         stripIndent`
           ---
-          date: ${format(time, `yyyy-MM-dd'T'hh:mm`)}
+          date: 2020-12-26T01:00
+          ---
+          
+          `
+      );
+    });
+
+    test('formats the iso date correctly.', async (): Promise<void> => {
+      const time = new Date('2020-12-26T15:20');
+      const stop = record(false);
+
+      timekeeper.freeze(time);
+
+      await runCli({
+        rootCommand: rootCommand(),
+        argv: [ 'new' ],
+        handlers: getHandlers()
+      });
+
+      stop();
+
+      const files = await fs.promises.readdir(appDirectory);
+      const fileContent = await fs.promises.readFile(path.join(appDirectory, files[0]), 'utf-8');
+
+      assert.that(fileContent).is.startingWith(
+        stripIndent`
+          ---
+          date: 2020-12-26T15:20
           ---
           
           `
