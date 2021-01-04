@@ -1,9 +1,11 @@
 import { assert } from 'assertthat';
 import { buntstift } from 'buntstift';
 import { getHandlers } from '../../../lib/cli/getHandlers';
+import path from 'path';
 import { record } from 'record-stdstreams';
 import { rootCommand } from '../../../lib/cli/rootCommand';
 import { runCli } from 'command-line-interface';
+import { setCwd } from '../../shared/setCwd';
 
 suite('zkt', (): void => {
   buntstift.configure(
@@ -25,6 +27,27 @@ suite('zkt', (): void => {
       assert.that(stdout).is.containing('The available templates are:');
       assert.that(stdout).is.containing('daily-link');
       assert.that(stdout).is.containing('empty (default)');
+    });
+
+    test('lists all user-defined templates.', async (): Promise<void> => {
+      const stop = record(false);
+      const resetCwd = setCwd({ directory: path.join(__dirname, '..', '..', 'shared') });
+
+      await runCli({
+        rootCommand: rootCommand(),
+        argv: [ 'templates' ],
+        handlers: getHandlers()
+      });
+
+      const { stdout } = stop();
+
+      assert.that(stdout).is.containing('The available templates are:');
+      assert.that(stdout).is.containing('another');
+      assert.that(stdout).is.containing('daily-link');
+      assert.that(stdout).is.containing('empty (default)');
+      assert.that(stdout).is.containing('test');
+
+      resetCwd();
     });
   });
 

@@ -2,6 +2,7 @@ import { buntstift } from 'buntstift';
 import { Command } from 'command-line-interface';
 import { defaultTemplateName } from '../../domain/constants/defaultTemplateName';
 import { findTemplates } from '../../domain/findTemplates';
+import { findUserTemplates } from '../../domain/findUserTemplates';
 import { format } from 'date-fns';
 import fs from 'fs';
 import { generateZettelId } from '../../domain/generateZettelId';
@@ -39,7 +40,10 @@ const newCommand = function (): Command<NewOptions> {
           withQuietMode(noInteraction)
       );
 
-      const availableTemplates = await findTemplates();
+      const availableTemplates = [
+        ...await findTemplates(),
+        ...await findUserTemplates({ zettelkastenDirectory: process.cwd() })
+      ];
       const selectedTemplate = availableTemplates.find(
         (template): boolean => template.name === templateName
       );

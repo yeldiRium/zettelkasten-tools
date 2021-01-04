@@ -8,6 +8,7 @@ import path from 'path';
 import { record } from 'record-stdstreams';
 import { rootCommand } from '../../../lib/cli/rootCommand';
 import { runCli } from 'command-line-interface';
+import shelljs from 'shelljs';
 import sinon from 'sinon';
 import { stripIndent } from 'common-tags';
 import timekeeper from 'timekeeper';
@@ -124,7 +125,6 @@ suite('zkt', (): void => {
           ---
           date: 2020-12-26T00:00
           ---
-          
           `
         );
       });
@@ -169,6 +169,36 @@ suite('zkt', (): void => {
             ## Comments
             
             ## Fulltext
+          `
+        );
+      });
+
+      test(`creates a new zettel with a user-defined template.`, async (): Promise<void> => {
+        const stop = record(false);
+
+        shelljs.cp(
+          '-r',
+          path.join(__dirname, '..', '..', 'shared', 'templates'),
+          path.join(appDirectory, 'templates')
+        );
+
+        await runCli({
+          rootCommand: rootCommand(),
+          argv: [ 'new', '--template', 'test' ],
+          handlers: getHandlers()
+        });
+
+        stop();
+
+        const files = await fs.promises.readdir(appDirectory);
+        const fileContent = await fs.promises.readFile(path.join(appDirectory, files[0]), 'utf-8');
+
+        assert.that(fileContent).is.startingWith(
+          stripIndent`
+            ---
+            date: 2020-12-26T00:00
+            ---
+            # Test
           `
         );
       });

@@ -2,6 +2,7 @@ import { buntstift } from 'buntstift';
 import { Command } from 'command-line-interface';
 import { defaultTemplateName } from '../../domain/constants/defaultTemplateName';
 import { findTemplates } from '../../domain/findTemplates';
+import { findUserTemplates } from '../../domain/findUserTemplates';
 import { oneLine } from 'common-tags';
 import { TemplatesOptions } from './TemplatesOptions';
 
@@ -24,7 +25,10 @@ const templatesCommand = function (): Command<TemplatesOptions> {
           withQuietMode(noInteraction)
       );
 
-      const availableTemplates = await findTemplates();
+      const availableTemplates = [
+        ...await findTemplates(),
+        ...await findUserTemplates({ zettelkastenDirectory: process.cwd() })
+      ];
 
       buntstift.info('The available templates are:');
 
