@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/yeldirium/zettelkasten-tools/compare/v2.1.0...v2.2.0) (2021-01-04)
+
+
+### Features
+
+* Find and use user-defined templates. ([#3](https://github.com/yeldirium/zettelkasten-tools/issues/3)) ([429f2c3](https://github.com/yeldirium/zettelkasten-tools/commit/429f2c3dcd44abdb0f6006a0271560f1fb0bc439))
+
 # [2.1.0](https://github.com/yeldirium/zettelkasten-tools/compare/v2.0.0...v2.1.0) (2020-12-26)
 
 
