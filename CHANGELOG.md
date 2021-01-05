@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/yeldirium/zettelkasten-tools/compare/v2.2.0...v2.3.0) (2021-01-05)
+
+
+### Features
+
+* Add another date format to templates. ([8d4ef3f](https://github.com/yeldirium/zettelkasten-tools/commit/8d4ef3f345eb71e18acd16d0446b5337a8efa940))
+
 # [2.2.0](https://github.com/yeldirium/zettelkasten-tools/compare/v2.1.0...v2.2.0) (2021-01-04)
 
 
