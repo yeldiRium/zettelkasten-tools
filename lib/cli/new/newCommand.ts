@@ -89,7 +89,7 @@ const newCommand = function (): Command<NewOptions> {
       await fs.promises.writeFile(newZettelPath, renderedZettel, 'utf-8');
 
       if (noInteraction) {
-        buntstift.raw(`${path.basename(newZettelPath)}\n`);
+        buntstift.raw(`${newZettelPath}\n`);
       }
     }
   };

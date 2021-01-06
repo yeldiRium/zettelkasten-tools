@@ -2,7 +2,6 @@ import { assert } from 'assertthat';
 import { buntstift } from 'buntstift';
 import fs from 'fs';
 import { getHandlers } from '../../../lib/cli/getHandlers';
-import { idLength } from '../../../lib/domain/generateZettelId';
 import { isolated } from 'isolated';
 import path from 'path';
 import { record } from 'record-stdstreams';
@@ -284,7 +283,7 @@ suite('zkt', (): void => {
   });
 
   suite('--no-interaction new', (): void => {
-    test('prints only the file name of the new zettel.', async (): Promise<void> => {
+    test('prints only the file path of the new zettel.', async (): Promise<void> => {
       const stop = record(false);
 
       await runCli({
@@ -296,7 +295,8 @@ suite('zkt', (): void => {
       const { stdout } = stop();
 
       assert.that(stdout).is.not.containing('Creating new zettel ');
-      assert.that(stdout.length).is.equalTo(idLength + '.md\n'.length);
+      assert.that(stdout).is.startingWith(appDirectory);
+      assert.that(stdout).is.endingWith('.md\n');
     });
   });
 });
