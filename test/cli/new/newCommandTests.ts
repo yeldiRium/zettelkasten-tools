@@ -151,7 +151,6 @@ suite('zkt', (): void => {
             ---
             date: 2020-12-26T00:00
             tags:
-              - daily/2020/12/26
               - link
               - comment
             ---
