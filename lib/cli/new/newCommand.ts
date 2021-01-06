@@ -24,13 +24,20 @@ const newCommand = function (): Command<NewOptions> {
         type: 'string',
         isRequired: false,
         defaultValue: defaultTemplateName
+      },
+      {
+        name: 'output-directory',
+        alias: 'o',
+        type: 'string',
+        isRequired: false
       }
     ],
 
     async handle ({ options: {
       verbose,
       'no-interaction': noInteractionFlag,
-      template: templateName
+      template: templateName,
+      'output-directory': outputDirectory
     }}): Promise<void> {
       const noInteraction = noInteractionFlag || !buntstift.getConfiguration().isInteractiveSession;
 
@@ -52,9 +59,9 @@ const newCommand = function (): Command<NewOptions> {
         throw new TemplateNotFound(`Template '${templateName}' could not be found.`);
       }
 
-      const cwd = process.cwd();
       const newId = generateZettelId();
-      const newZettelPath = path.join(cwd, `${newId}.md`);
+      const newZettelDirectory = outputDirectory ?? process.cwd();
+      const newZettelPath = path.join(newZettelDirectory, `${newId}.md`);
 
       const currentDate = new Date();
       const data = {
@@ -67,6 +74,8 @@ const newCommand = function (): Command<NewOptions> {
       };
 
       buntstift.info(`Creating new zettel ${newId}...`);
+
+      await fs.promises.mkdir(newZettelDirectory, { recursive: true });
 
       const renderedZettel = unpackOrCrash(await renderFile({
         path: selectedTemplate.path,

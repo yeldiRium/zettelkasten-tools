@@ -7,11 +7,15 @@ import { rootCommand } from '../../../lib/cli/rootCommand';
 import { runCli } from 'command-line-interface';
 import { setCwd } from '../../shared/setCwd';
 
-suite('zkt', (): void => {
-  buntstift.configure(
-    buntstift.getConfiguration().withInteractiveSession(true)
-  );
+buntstift.configure(
+  buntstift.getConfiguration().withInteractiveSession(true)
+);
 
+// @ts-expect-error Disable process.exit for better test experience with command-line-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+process.exit = (): never => {};
+
+suite('zkt', (): void => {
   suite('templates', (): void => {
     test('lists all predefined templates and marks the default one.', async (): Promise<void> => {
       const stop = record(false);

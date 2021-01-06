@@ -17,6 +17,10 @@ buntstift.configure(
   buntstift.getConfiguration().withInteractiveSession(true)
 );
 
+// @ts-expect-error Disable process.exit for better test experience with command-line-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+process.exit = (): never => {};
+
 suite('zkt', (): void => {
   let appDirectory: string;
 
@@ -219,6 +223,36 @@ suite('zkt', (): void => {
         assert.that(stderr).is.containing(`Template 'does-not-exist' could not be found.`);
 
         exitStub.restore();
+      });
+    });
+
+    suite('--output-directory', (): void => {
+      test('creates the new zettel in the given directory and creates the directory path.', async (): Promise<void> => {
+        const time = new Date('2020-12-26T00:00');
+        const stop = record(false);
+
+        timekeeper.freeze(time);
+
+        const zettelDirectoryPath = path.join(appDirectory, 'path', 'to', 'zettel');
+
+        await runCli({
+          rootCommand: rootCommand(),
+          argv: [ 'new', '--template', 'empty', '--output-directory', zettelDirectoryPath ],
+          handlers: getHandlers()
+        });
+
+        stop();
+
+        const files = await fs.promises.readdir(zettelDirectoryPath);
+        const fileContent = await fs.promises.readFile(path.join(zettelDirectoryPath, files[0]), 'utf-8');
+
+        assert.that(fileContent).is.startingWith(
+          stripIndent`
+          ---
+          date: 2020-12-26T00:00
+          ---
+          `
+        );
       });
     });
   });
