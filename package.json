@@ -2,46 +2,54 @@
   "name": "@yeldirium/zettelkasten-tools",
   "version": "3.0.0",
   "description": "A template for npm packages written in TypeScript.",
-  "author": {
-    "name": "Hannes Leutloff",
-    "email": "hannes.leutloff@yeldirium.de",
-    "url": "https://yeldirium.de/"
+  "contributors": [
+    {
+      "name": "Hannes Leutloff",
+      "email": "hannes.leutloff@yeldirium.de",
+      "url": "https://yeldirium.de/"
+    }
+  ],
+  "private": false,
+  "bin": {
+    "zkt": "./build/lib/bin/zkt.js"
   },
-  "license": "MIT",
+  "dependencies": {
+    "@yeldirium/kaputt": "2.1.1",
+    "@yeldirium/result": "1.2.1",
+    "buntstift": "5.0.0",
+    "command-line-interface": "4.0.21",
+    "date-fns": "2.25.0",
+    "ejs": "3.1.6"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "6.0.0",
+    "@semantic-release/git": "10.0.0",
+    "@types/common-tags": "1.8.1",
+    "@types/ejs": "3.1.0",
+    "@types/shelljs": "0.8.9",
+    "@types/sinon": "10.0.4",
+    "assertthat": "6.3.13",
+    "common-tags": "1.8.0",
+    "flaschenpost": "5.0.49",
+    "isolated": "3.0.25",
+    "record-stdstreams": "3.0.69",
+    "roboter": "12.3.0",
+    "semantic-release": "18.0.0",
+    "shelljs": "0.8.4",
+    "sinon": "11.1.2",
+    "timekeeper": "2.2.0"
+  },
+  "scripts": {
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/yeldirium/zettelkasten-tools.git"
   },
-  "bin": {
-    "zkt": "./build/lib/bin/zkt.js"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@yeldirium/kaputt": "2.1.0",
-    "@yeldirium/result": "1.2.0",
-    "buntstift": "4.0.17",
-    "command-line-interface": "3.6.15",
-    "date-fns": "2.16.1",
-    "ejs": "3.1.5"
-  },
-  "devDependencies": {
-    "@semantic-release/changelog": "5.0.1",
-    "@semantic-release/git": "9.0.0",
-    "@types/common-tags": "1.8.0",
-    "@types/ejs": "3.0.5",
-    "@types/shelljs": "0.8.8",
-    "@types/sinon": "9.0.9",
-    "assertthat": "5.2.1",
-    "common-tags": "1.8.0",
-    "flaschenpost": "4.3.27",
-    "isolated": "3.0.9",
-    "record-stdstreams": "3.0.34",
-    "roboter": "11.4.2",
-    "semantic-release": "17.3.0",
-    "shelljs": "0.8.4",
-    "sinon": "9.2.2",
-    "timekeeper": "2.2.0"
-  }
+  "keywords": [
+    "zettelkasten"
+  ],
+  "license": "MIT"
 }

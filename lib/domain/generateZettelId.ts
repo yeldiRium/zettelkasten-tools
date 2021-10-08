@@ -8,7 +8,7 @@ const randomCharacter = function (): string {
 };
 
 const generateZettelId = function (): ZettelId {
-  return new Array(idLength).
+  return Array.from({ length: idLength }).
     fill('').
     map((): string => randomCharacter()).
     join('');
